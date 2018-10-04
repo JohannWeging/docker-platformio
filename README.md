@@ -1,2 +1,2 @@
-# docker-platformio
+# PlatformIO
 Docker container with PlatformIO
