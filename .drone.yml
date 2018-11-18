@@ -1,6 +1,36 @@
-pipeline:
-  docker:
-    image: plugins/docker
+---
+kind: pipeline
+name: build amd64
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: version latest
+  image: plugins/docker
+  settings:
+    dockerfile: Dockerfile
+    password:
+      from_secret: docker_password
     repo: johannweging/platformio
     tags: latest
-    secrets: [docker_username, docker_password]
+    username:
+      from_secret: docker_username
+
+trigger:
+  branch:
+  - master
+
+---
+kind: secret
+type: general
+external_data:
+  docker_password:
+    path: secret/deployment/docker
+    name: password
+  docker_username:
+    path: secret/deployment/docker
+    name: username
+
+...
