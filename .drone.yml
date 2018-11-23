@@ -22,15 +22,4 @@ trigger:
   branch:
   - master
 
----
-kind: secret
-type: general
-external_data:
-  docker_password:
-    path: secret/deployment/docker
-    name: password
-  docker_username:
-    path: secret/deployment/docker
-    name: username
-
 ...

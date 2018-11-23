@@ -21,21 +21,6 @@ local pipeline(name, tag) = {
   },
 };
 
-local secret = {
-  kind: 'secret',
-  external_data: {
-    docker_username: {
-      path: 'secret/deployment/docker',
-      name: 'username',
-    },
-    docker_password: {
-      path: 'secret/deployment/docker',
-      name: 'password',
-    },
-  },
-};
-
 [
   pipeline('build amd64', 'latest'),
-  secret,
 ]
